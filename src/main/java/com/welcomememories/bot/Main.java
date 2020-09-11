@@ -47,7 +47,7 @@ public class Main extends ListenerAdapter {
         System.out.println(">>>Raw|" + event.getMessage().getContentRaw());
         
         //Handle commands
-        if (event.getMessage().getContentRaw().equals("!ping")){
+        if (event.getMessage().getContentRaw().equals(prefix + "!ping")){
             event.getChannel().sendMessage("Pong!").queue();
         }
         
