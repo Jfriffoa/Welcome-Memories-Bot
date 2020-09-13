@@ -16,26 +16,32 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 
 /**
- * @author Jose Francisco Riffo
+ * @author Jose Francisco Riffo <jfriffoa@gmail.com>
  */
 public class Main extends ListenerAdapter {
 
-    static String prefix = "!";
+    public static String prefix = "!";
     
     /**
+     * Launch the bot
      * @param args the command line arguments
      * @throws javax.security.auth.login.LoginException
      */
     public static void main(String[] args) throws LoginException {
+        // Read the key from a file
         Scanner sc = new Scanner(Thread.currentThread().getContextClassLoader().getResourceAsStream("oath.key"));
         String apiKey = sc.nextLine();
         JDABuilder builder = JDABuilder.createDefault(apiKey);
+        
+        // Set the flags
         builder.disableCache(CacheFlag.VOICE_STATE, CacheFlag.MEMBER_OVERRIDES);
         builder.setBulkDeleteSplittingEnabled(false);
-        builder.setActivity(Activity.watching("Cry baby Cry"));
+        builder.setActivity(Activity.watching("Watching You"));
         
-        builder.addEventListeners(new Main());
+        // Add Listeners
+        builder.addEventListeners(new MessagesToChannels());
         
+        // Build the bot
         builder.build();
     }
 
