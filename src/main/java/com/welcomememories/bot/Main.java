@@ -36,7 +36,7 @@ public class Main extends ListenerAdapter {
         // Set the flags
         builder.disableCache(CacheFlag.VOICE_STATE, CacheFlag.MEMBER_OVERRIDES);
         builder.setBulkDeleteSplittingEnabled(false);
-        builder.setActivity(Activity.watching("Watching You"));
+        builder.setActivity(Activity.playing("Don't ask me"));
         
         // Add Listeners
         builder.addEventListeners(new MessagesToChannels());
